@@ -11,6 +11,11 @@ $ hil8 foobar < file
 ```
 
 ```
+# highlights lines NOT containing the string foobar in file
+$ hil8 -reverse foobar < file
+```
+
+```
 # highlights lines matching the regular expression ^foobar in file
 $ hil8 -regexp '^foobar' < file
 ```

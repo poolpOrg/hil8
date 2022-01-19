@@ -29,9 +29,11 @@ import (
 func main() {
 	var color string
 	var useRegex bool
+	var reverseMatch bool
 
 	flag.StringVar(&color, "color", "green", "color to use for hilighting")
 	flag.BoolVar(&useRegex, "regexp", false, "use regular expression")
+	flag.BoolVar(&reverseMatch, "reverse", false, "reverse match")
 	flag.Parse()
 
 	if flag.NArg() == 0 {
@@ -64,6 +66,9 @@ func main() {
 				if strings.Contains(scanner.Text(), pattern) {
 					matched = true
 				}
+			}
+			if reverseMatch {
+				matched = !matched
 			}
 			if matched {
 				fmt.Printf("%s%s%s\n", colorCode, scanner.Text(), "\033[0m")
